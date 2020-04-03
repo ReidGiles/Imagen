@@ -8,5 +8,6 @@ namespace Imagen.Models
 {
     public interface ICollectionModel
     {
+        void LoadImages(IList<string> pathfilenames, int frameWidth, int frameHeight);
     }
 }

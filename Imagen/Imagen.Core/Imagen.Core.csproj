@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command.cs" />
+    <Compile Include="Delegates.cs" />
+    <Compile Include="EventHandling\CollectionEventArgs.cs" />
+    <Compile Include="EventHandling\ICollectionListener.cs" />
+    <Compile Include="EventHandling\ICollectionPublisher.cs" />
+    <Compile Include="ICommand.cs" />
     <Compile Include="ImageManager\IImageManager.cs" />
     <Compile Include="ImageManager\ImageManager.cs" />
     <Compile Include="ImageProcessor\IImageProcessor.cs" />

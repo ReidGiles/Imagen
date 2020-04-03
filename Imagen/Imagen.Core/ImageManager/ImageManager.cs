@@ -12,7 +12,7 @@ namespace Imagen.Core
     /// 
     /// Author: Reid Giles
     /// </summary>
-    class ImageManager : IImageManager
+    public class ImageManager : IImageManager
     {
         // DECLARE an IImages, call it '_images'
         private IImageStore _images;

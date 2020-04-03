@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Imagen.Views;
 using Imagen.Models;
+using Imagen.Core;
 
 namespace Imagen.Controller
 {
@@ -27,6 +28,11 @@ namespace Imagen.Controller
 
             // INSTANTIATE _collectionView:
             _collectionView = new CollectionView();
+
+            _collectionView.Initialise(ExecuteCommand, _collectionModel.LoadImages);
+
+            (_collectionModel as ICollectionPublisher).Subscribe( (_collectionView as ICollectionListener).OnNewInput );
+
             // Set view title bar
             _collectionView.Text = "Imagen Demo Application";
             // Open view

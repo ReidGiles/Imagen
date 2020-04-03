@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Imagen.Controller
+namespace Imagen.Core
 {
-    interface ICommand
+    public interface ICommand
     {
         /// <summary>
         /// Executes the command

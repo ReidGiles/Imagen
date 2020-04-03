@@ -16,5 +16,9 @@ namespace Imagen.Views
         {
             InitializeComponent();
         }
+
+        public void Initialise()
+        {
+        }
     }
 }

@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imagen.Demo", "Imagen.Controller\Imagen.Demo.csproj", "{FD8A13C2-9892-4BDF-9B7D-7A56FCD713AA}"
 	ProjectSection(ProjectDependencies) = postProject
 		{5A7FCC19-1DD3-44A2-AC7B-699CF8508663} = {5A7FCC19-1DD3-44A2-AC7B-699CF8508663}
+		{101E5D2E-6586-4BE9-A010-ADDD771C88B4} = {101E5D2E-6586-4BE9-A010-ADDD771C88B4}
 		{746D375E-AE0B-4435-93DB-DF37AE5B20B9} = {746D375E-AE0B-4435-93DB-DF37AE5B20B9}
 	EndProjectSection
 EndProject
@@ -15,6 +16,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imagen.Models", "Imagen.Mod
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imagen.Views", "Imagen.Views\Imagen.Views.csproj", "{746D375E-AE0B-4435-93DB-DF37AE5B20B9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{101E5D2E-6586-4BE9-A010-ADDD771C88B4} = {101E5D2E-6586-4BE9-A010-ADDD771C88B4}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imagen.Core", "Imagen.Core\Imagen.Core.csproj", "{101E5D2E-6586-4BE9-A010-ADDD771C88B4}"
 EndProject
