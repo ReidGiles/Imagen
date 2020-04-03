@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Imagen.Models
 {
-    interface IDisplayModel
+    public interface IDisplayModel
     {
     }
 }

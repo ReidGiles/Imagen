@@ -47,5 +47,14 @@ namespace Imagen.Controller
         {
             command.Execute();
         }
+
+        private void OpenDisplayView(string imageKey)
+        {
+            IDisplayModel displayModel = new DisplayModel();
+
+            DisplayView displayView = new DisplayView();
+
+            displayView.Initialise(ExecuteCommand);
+        }
     }
 }

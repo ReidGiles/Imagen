@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Imagen.Models
 {
-    class DisplayModel : IDisplayModel
+    public class DisplayModel : IDisplayModel
     {
     }
 }
