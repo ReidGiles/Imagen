@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Imagen.Controller
+namespace Imagen.Views
 {
-    public partial class Form1 : Form
+    public partial class CollectionView : Form
     {
-        public Form1()
+        public CollectionView()
         {
             InitializeComponent();
         }

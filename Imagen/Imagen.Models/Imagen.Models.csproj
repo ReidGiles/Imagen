@@ -41,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CollectionModel\CollectionModel.cs" />
+    <Compile Include="CollectionModel\ICollectionModel.cs" />
+    <Compile Include="DisplayModel\DisplayModel.cs" />
+    <Compile Include="DisplayModel\IDisplayModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
