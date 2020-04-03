@@ -10,14 +10,14 @@ namespace Imagen.Core
     public class CollectionEventArgs
     {
         /// <summary>
-        /// Property to hold the published images
+        /// Property to hold the published images with their unique ID
         /// </summary>
-        public IList<Image> Images { get; set; }
+        public IDictionary<string, Image> Images { get; set; }
 
         /// <summary>
         /// Constructor for CollectionEventArgs
         /// </summary>
-        public CollectionEventArgs(IList<Image> images)
+        public CollectionEventArgs(IDictionary<string, Image> images)
         {
             // INSTANTIATE _images
             this.Images = images;

@@ -18,7 +18,7 @@ namespace Imagen.Views
 
         private Action<IList<string>, int, int> _loadImages;
 
-        int imageNum = 1;
+        int imageNum = 0;
         int x = 0;
         int y = 0;
         int _height = 150;
@@ -41,12 +41,16 @@ namespace Imagen.Views
 
         void ICollectionListener.OnNewInput(object source, CollectionEventArgs args)
         {
-            foreach (Image image in args.Images)
+            foreach (string key in args.Images.Keys)
             {
+                imageNum += 1;
+
                 PictureBox picture = new PictureBox();
                 picture.Location = new Point(x, y);
                 picture.Size = new Size(_width, _height);
-                picture.Image = image;
+                picture.Image = args.Images[key];
+                picture.Name = key;
+                picture.Click += new EventHandler(picture_Click);
                 imagePanel.Controls.Add(picture);
 
                 if (imageNum % 3 == 0)
@@ -58,8 +62,6 @@ namespace Imagen.Views
                 {
                     x += 175;
                 }
-
-                imageNum += 1;
             }
         }
 
@@ -71,6 +73,11 @@ namespace Imagen.Views
 
             ICommand loadImages = new Command<IList<string>, int, int>(_loadImages, filePicker.FileNames.ToList(), _width, _height);
             _execute(loadImages);
+        }
+
+        private void picture_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine((sender as PictureBox).Name);
         }
     }
 }

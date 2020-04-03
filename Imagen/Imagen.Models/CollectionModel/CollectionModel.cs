@@ -26,12 +26,12 @@ namespace Imagen.Models
 
         public void LoadImages(IList<string> pathfilenames, int frameWidth, int frameHeight)
         {
-            IList<Image> images = new List<Image>();
+            IDictionary<string, Image> images = new Dictionary<string, Image>();
             IList<String> imageKeyList = new List<String>();
             imageKeyList = _imageManager.load(pathfilenames);
             foreach (string key in imageKeyList)
             {
-                images.Add(_imageManager.getImage(key, frameWidth, frameHeight));
+                images.Add(key, _imageManager.getImage(key, frameWidth, frameHeight));
             }
 
             CollectionEventArgs args = new CollectionEventArgs(images);
