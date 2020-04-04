@@ -15,6 +15,7 @@ namespace Imagen.Core
         /// <param name="pFilePath"></param>
         /// <returns></returns>
         Image LoadImage(string pFilePath);
+
         /// <summary>
         /// Resizes an image
         /// </summary>
@@ -22,5 +23,22 @@ namespace Imagen.Core
         /// <param name="pSize"></param>
         /// <returns></returns>
         Image ResizeImage(Image pImage, Size pSize);
+
+        /// <summary>
+        /// Rotates an image
+        /// </summary>
+        /// <param name="pImage"></param>
+        /// <param name="pDegrees"></param>
+        /// <returns></returns>
+        Image RotateImage(Image pImage, float pDegrees);
+
+        /// <summary>
+        /// Flips an image
+        /// </summary>
+        /// <param name="pImage"></param>
+        /// <param name="flipVertical"></param>
+        /// <param name="flipHorizontal"></param>
+        /// <returns></returns>
+        Image FlipImage(Image pImage, bool flipVertical, bool flipHorizontal);
     }
 }

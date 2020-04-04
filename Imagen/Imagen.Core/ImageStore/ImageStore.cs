@@ -48,17 +48,15 @@ namespace Imagen.Core
         /// <param name="pKey"></param>
         /// <param name="pImage"></param>
         /// <returns></returns>
-        public bool Set(string pKey, Image pImage)
+        public void Set(string pKey, Image pImage)
         {
-            try
+            if (_imageDic.ContainsKey(pKey))
+            {
+                _imageDic[pKey] = pImage;
+            }
+            else
             {
                 _imageDic.Add(pKey, pImage);
-                return true;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return false;
             }
         }
     }

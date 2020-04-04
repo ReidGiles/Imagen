@@ -50,5 +50,32 @@ namespace Imagen.Core
             _imageFactory.Resize(pSize);
             return _imageFactory.Image;
         }
+
+        /// <summary>
+        /// Rotates an image
+        /// </summary>
+        /// <param name="pImage"></param>
+        /// <param name="pDegrees"></param>
+        /// <returns></returns>
+        public Image RotateImage(Image pImage, float pDegrees)
+        {
+            _imageFactory.Load(pImage);
+            _imageFactory.Rotate(pDegrees);
+            return _imageFactory.Image;
+        }
+
+        /// <summary>
+        /// Flips an image
+        /// </summary>
+        /// <param name="pImage"></param>
+        /// <param name="flipVertical"></param>
+        /// <param name="flipHorizontal"></param>
+        /// <returns></returns>
+        public Image FlipImage(Image pImage, bool flipVertical, bool flipHorizontal)
+        {
+            _imageFactory.Load(pImage);
+            _imageFactory.Flip(flipVertical, flipHorizontal);
+            return _imageFactory.Image;
+        }
     }
 }

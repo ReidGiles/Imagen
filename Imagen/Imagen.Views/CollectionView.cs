@@ -18,6 +18,8 @@ namespace Imagen.Views
 
         private Action<IList<string>, int, int> _loadImages;
 
+        private Action<string, Image> _openDisplayView;
+
         int imageNum = 0;
         int x = 0;
         int y = 0;
@@ -29,12 +31,14 @@ namespace Imagen.Views
             InitializeComponent();
         }
 
-        public void Initialise(ExecuteDelegate execute, Action<IList<string>, int, int> loadImages)
+        public void Initialise(ExecuteDelegate execute, Action<IList<string>, int, int> loadImages, Action<string, Image> openDisplayView)
         {
             // SET _execute:
             _execute = execute;
 
             _loadImages = loadImages;
+
+            _openDisplayView = openDisplayView;
 
             this.imagePanel.AutoScroll = true;
         }
@@ -50,7 +54,7 @@ namespace Imagen.Views
                 picture.Size = new Size(_width, _height);
                 picture.Image = args.Images[key];
                 picture.Name = key;
-                picture.Click += new EventHandler(picture_Click);
+                picture.DoubleClick += new EventHandler(picture_Click);
                 imagePanel.Controls.Add(picture);
 
                 if (imageNum % 3 == 0)
@@ -78,6 +82,9 @@ namespace Imagen.Views
         private void picture_Click(object sender, EventArgs e)
         {
             Console.WriteLine((sender as PictureBox).Name);
+
+            ICommand openDisplayView = new Command<string, Image>(_openDisplayView, (sender as PictureBox).Name, (sender as PictureBox).Image);
+            _execute(openDisplayView);
         }
     }
 }

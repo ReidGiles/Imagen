@@ -11,6 +11,4 @@ namespace Imagen.Core
     /// </summary>
     /// <param name="command"></param>
     public delegate void ExecuteDelegate(ICommand command);
-
-    public delegate void LoadImagesDelegate(IList<string> pathfilenames, int frameWidth, int frameHeight);
 }

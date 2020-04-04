@@ -19,9 +19,10 @@ namespace Imagen.Models
         /// <summary>
         /// Contructor for the collection model
         /// </summary>
-        public CollectionModel()
+        public CollectionModel(IImageManager imageManager)
         {
-            _imageManager = new ImageManager();
+            // INSTANTIATE _imageManager
+            _imageManager = imageManager;
         }
 
         public void LoadImages(IList<string> pathfilenames, int frameWidth, int frameHeight)

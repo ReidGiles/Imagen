@@ -19,7 +19,7 @@ namespace Imagen.Core
         /// </summary>
         public CollectionEventArgs(IDictionary<string, Image> images)
         {
-            // INSTANTIATE _images
+            // INSTANTIATE _images:
             this.Images = images;
         }
     }

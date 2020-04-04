@@ -7,11 +7,15 @@ using System.Windows.Forms;
 using Imagen.Views;
 using Imagen.Models;
 using Imagen.Core;
+using System.Drawing;
 
 namespace Imagen.Controller
 {
     class Controller
     {
+        // DECLARE an IImageManager, call it '_imageManager':
+        private IImageManager _imageManager;
+
         // DECLARE a collectionView, call it '_collectionView':
         private CollectionView _collectionView;
 
@@ -23,15 +27,18 @@ namespace Imagen.Controller
         /// </summary>
         public Controller()
         {
+            // INSTANTIATE _imageManager:
+            _imageManager = new ImageManager();
+
             // INSTANTIIATE _collectionModel:
-            _collectionModel = new CollectionModel();
+            _collectionModel = new CollectionModel(_imageManager);
 
             // INSTANTIATE _collectionView:
             _collectionView = new CollectionView();
 
-            _collectionView.Initialise(ExecuteCommand, _collectionModel.LoadImages);
+            _collectionView.Initialise(ExecuteCommand, _collectionModel.LoadImages, OpenDisplayView);
 
-            (_collectionModel as ICollectionPublisher).Subscribe( (_collectionView as ICollectionListener).OnNewInput );
+            (_collectionModel as ICollectionPublisher).Subscribe((_collectionView as ICollectionListener).OnNewInput);
 
             // Set view title bar
             _collectionView.Text = "Imagen Demo Application";
@@ -48,13 +55,19 @@ namespace Imagen.Controller
             command.Execute();
         }
 
-        private void OpenDisplayView(string imageKey)
+        private void OpenDisplayView(string imageKey, Image image)
         {
-            IDisplayModel displayModel = new DisplayModel();
+            IDisplayModel displayModel = new DisplayModel(_imageManager, imageKey);
 
             DisplayView displayView = new DisplayView();
 
-            displayView.Initialise(ExecuteCommand);
+            (displayModel as IDisplayPublisher).Subscribe((displayView as IDisplayListener).OnNewInput);
+
+            displayView.Initialise(ExecuteCommand, displayModel.LoadImage, displayModel.RotateImage, displayModel.FlipImage, displayModel.ResizeImage, imageKey);            
+
+            displayView.Text = "Display View";
+
+            displayView.Show();
         }
     }
 }

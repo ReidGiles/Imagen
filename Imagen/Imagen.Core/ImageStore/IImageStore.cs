@@ -11,6 +11,6 @@ namespace Imagen.Core
     {
         Image Retrieve(string pFilePath);
         bool Delete(string pKey, Image pImage);
-        bool Set(string pKey, Image pImage);
+        void Set(string pKey, Image pImage);
     }
 }

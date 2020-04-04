@@ -48,8 +48,11 @@
     <Compile Include="Command.cs" />
     <Compile Include="Delegates.cs" />
     <Compile Include="EventHandling\CollectionEventArgs.cs" />
+    <Compile Include="EventHandling\DisplayEventArgs.cs" />
     <Compile Include="EventHandling\ICollectionListener.cs" />
     <Compile Include="EventHandling\ICollectionPublisher.cs" />
+    <Compile Include="EventHandling\IDisplayListener.cs" />
+    <Compile Include="EventHandling\IDisplayPublisher.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="ImageManager\IImageManager.cs" />
     <Compile Include="ImageManager\ImageManager.cs" />

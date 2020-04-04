@@ -45,6 +45,29 @@ namespace Imagen.Core
 
         }
 
+        public Image RotateImage(string key, int frameWidth, int frameHeight, float rotateDegrees)
+        {
+            Image image = getImage(key, frameWidth, frameHeight);
+            image = _imageProcessor.RotateImage(image, rotateDegrees);           
+            _images.Set(key, image);
+            return image;
+        }
+
+        public Image FlipImage(string key, int frameWidth, int frameHeight, bool flipVeritcal, bool flipHorizontal)
+        {
+            Image image = getImage(key, frameWidth, frameHeight);
+            image = _imageProcessor.FlipImage(image, flipVeritcal, flipHorizontal);
+            _images.Set(key, image);
+            return image;
+        }
+
+        public Image Resize(string key, int frameWidth, int frameHeight)
+        {
+            Image image = getImage(key, frameWidth, frameHeight);
+            _images.Set(key, image);
+            return image;
+        }
+
         /// <summary>
         /// Loads a list of images into memory and stores the unique ID's for later retrieval.
         /// </summary>

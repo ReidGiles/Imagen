@@ -67,6 +67,9 @@
     <EmbeddedResource Include="CollectionView.resx">
       <DependentUpon>CollectionView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DisplayView.resx">
+      <DependentUpon>DisplayView.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
