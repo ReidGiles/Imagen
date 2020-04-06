@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace Imagen.Core
 {
+    /// <summary>
+    /// Event argument class for collection events.
+    /// 
+    /// Author: Reid Giles
+    /// </summary>
     public class CollectionEventArgs
     {
         /// <summary>

@@ -8,6 +8,11 @@ using Imagen.Core;
 
 namespace Imagen.Models
 {
+    /// <summary>
+    /// Model for collections.
+    /// 
+    /// Author: Reid Giles
+    /// </summary>
     public class CollectionModel : ICollectionModel, ICollectionPublisher
     {
         // DECLARE an IImageManager, call it '_imageManager':
@@ -25,6 +30,13 @@ namespace Imagen.Models
             _imageManager = imageManager;
         }
 
+        /// <summary>
+        /// Loads a group of images into storage from a list of pathFileNames & width/height.
+        /// Fires an event containing the loaded images to collection listeners.
+        /// </summary>
+        /// <param name="pathfilenames"></param>
+        /// <param name="frameWidth"></param>
+        /// <param name="frameHeight"></param>
         public void LoadImages(IList<string> pathfilenames, int frameWidth, int frameHeight)
         {
             IDictionary<string, Image> images = new Dictionary<string, Image>();

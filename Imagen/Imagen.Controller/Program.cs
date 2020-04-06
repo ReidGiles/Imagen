@@ -6,6 +6,11 @@ using System.Windows.Forms;
 
 namespace Imagen.Controller
 {
+    /// <summary>
+    /// Entry point, creates controller.
+    /// 
+    /// Author: Reid Giles
+    /// </summary>
     static class Program
     {
         /// <summary>

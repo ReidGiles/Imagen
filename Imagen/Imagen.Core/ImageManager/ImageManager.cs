@@ -45,6 +45,14 @@ namespace Imagen.Core
 
         }
 
+        /// <summary>
+        /// Returns a copy of the image specified by 'key', rotated by 'rotateDegrees'. Updates image inside image storage class.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="frameWidth"></param>
+        /// <param name="frameHeight"></param>
+        /// <param name="rotateDegrees"></param>
+        /// <returns></returns>
         public Image RotateImage(string key, int frameWidth, int frameHeight, float rotateDegrees)
         {
             Image image = getImage(key, frameWidth, frameHeight);
@@ -53,6 +61,15 @@ namespace Imagen.Core
             return image;
         }
 
+        /// <summary>
+        /// Returns a copy of the image specified by 'key', flipped horizontal, vertical or both. Updates image inside image storage class.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="frameWidth"></param>
+        /// <param name="frameHeight"></param>
+        /// <param name="flipVeritcal"></param>
+        /// <param name="flipHorizontal"></param>
+        /// <returns></returns>
         public Image FlipImage(string key, int frameWidth, int frameHeight, bool flipVeritcal, bool flipHorizontal)
         {
             Image image = getImage(key, frameWidth, frameHeight);
@@ -61,6 +78,13 @@ namespace Imagen.Core
             return image;
         }
 
+        /// <summary>
+        /// Returns a copy of the image specified by 'key', resized to 'frameWidth' and 'frameHeight'. Updates image inside image storage class.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="frameWidth"></param>
+        /// <param name="frameHeight"></param>
+        /// <returns></returns>
         public Image Resize(string key, int frameWidth, int frameHeight)
         {
             Image image = getImage(key, frameWidth, frameHeight);

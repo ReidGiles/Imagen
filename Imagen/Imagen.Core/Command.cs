@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Imagen.Core
 {
+    /// <summary>
+    /// Command class, stores an action for execute.
+    /// </summary>
     public class Command : ICommand
     {
         // DECLARE an to be executed by this command, call it _action:

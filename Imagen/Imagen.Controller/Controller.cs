@@ -11,6 +11,11 @@ using System.Drawing;
 
 namespace Imagen.Controller
 {
+    /// <summary>
+    /// Controller class.
+    /// 
+    /// Author: Reid Giles
+    /// </summary>
     class Controller
     {
         // DECLARE an IImageManager, call it '_imageManager':
@@ -52,21 +57,31 @@ namespace Imagen.Controller
         /// <param name="command"></param>
         public void ExecuteCommand(ICommand command)
         {
+            // Execute the command:
             command.Execute();
         }
 
+        /// <summary>
+        /// Opens a display view with a specified image.
+        /// </summary>
+        /// <param name="imageKey"></param>
+        /// <param name="image"></param>
         private void OpenDisplayView(string imageKey, Image image)
         {
             IDisplayModel displayModel = new DisplayModel(_imageManager, imageKey);
 
             DisplayView displayView = new DisplayView();
 
+            // Subscribe displayView to displayModel:
             (displayModel as IDisplayPublisher).Subscribe((displayView as IDisplayListener).OnNewInput);
 
+            // Initialise displayView with ExecuteDelegate and a collection of Actions to execute:
             displayView.Initialise(ExecuteCommand, displayModel.LoadImage, displayModel.RotateImage, displayModel.FlipImage, displayModel.ResizeImage, imageKey);            
 
+            // Set the displayView window title:
             displayView.Text = "Display View";
 
+            // Open displayView:
             displayView.Show();
         }
     }

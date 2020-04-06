@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace Imagen.Core
 {
+    /// <summary>
+    /// Data storage class, retrieves stores and sets images into a dictionary.
+    /// 
+    /// Author: Reid Giles
+    /// </summary>
     class ImageStore : IImageStore
     {
         // DECLARE an IDictionary of type Image, call it 'imageDictionary'
@@ -50,10 +55,12 @@ namespace Imagen.Core
         /// <returns></returns>
         public void Set(string pKey, Image pImage)
         {
+            // IF the image already exists in the dictionary, overwrite the image:
             if (_imageDic.ContainsKey(pKey))
             {
                 _imageDic[pKey] = pImage;
             }
+            // ELSE add the image as a new entry:
             else
             {
                 _imageDic.Add(pKey, pImage);

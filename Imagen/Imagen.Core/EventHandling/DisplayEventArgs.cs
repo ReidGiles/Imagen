@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace Imagen.Core
 {
+    /// <summary>
+    /// Event argument class for display events
+    /// 
+    /// Author: Reid Giles
+    /// </summary>
     public class DisplayEventArgs
     {
         /// <summary>

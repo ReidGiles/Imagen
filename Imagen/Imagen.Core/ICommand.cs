@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace Imagen.Core
 {
+    /// <summary>
+    /// Executes a command.
+    /// 
+    /// Author: Reid Giles
+    /// </summary>
     public interface ICommand
     {
         /// <summary>

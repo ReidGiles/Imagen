@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace Imagen.Core
 {
+    /// <summary>
+    /// Image manipulation, uses the 'ImageProcessor' library.
+    /// 
+    /// Author: Reid Giles
+    /// </summary>
     public interface IImageProcessor
     {
         /// <summary>
