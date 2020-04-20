@@ -45,6 +45,10 @@ namespace Imagen.Views
         public DisplayView()
         {
             InitializeComponent();
+
+            // no smaller than design time size
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+
         }
 
         /// <summary>
@@ -105,6 +109,7 @@ namespace Imagen.Views
         public void OnNewInput(object source, DisplayEventArgs args)
         {
             _pictureBox.Location = new Point(0, 0);
+            // here
             _pictureBox.Size = new Size(args.Image.Width, args.Image.Height);
             _pictureBox.Image = args.Image;
             displayPanel.Controls.Add(_pictureBox);
@@ -119,6 +124,12 @@ namespace Imagen.Views
         {
             displayPanel.Width = Width - 40;
             displayPanel.Height = Height - 225;
+
+            if (displayPanel.Width > displayPanel.Height)
+                displayPanel.Width = displayPanel.Height;
+            else if (displayPanel.Height > displayPanel.Width)
+                displayPanel.Height = displayPanel.Width;
+
             ICommand openImage = new Command<string, int, int>(_loadImage, _key, displayPanel.Width, displayPanel.Height);
             _execute(openImage);
         }
@@ -131,7 +142,9 @@ namespace Imagen.Views
         private void btnRotateLeft_Click(object sender, EventArgs e)
         {
             ICommand resizeImage = new Command<string, int, int, float>(_rotateImage, _key, displayPanel.Width, displayPanel.Height, -90);
+            ICommand openImage = new Command<string, int, int>(_loadImage, _key, displayPanel.Width, displayPanel.Height);
             _execute(resizeImage);
+            _execute(openImage);
         }
 
         /// <summary>
