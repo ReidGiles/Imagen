@@ -33,6 +33,9 @@ namespace Imagen.Views
         // DECLARE an Action<string, int, int> to resize images, call it '_resizeImage':
         private Action<string, int, int> _resizeImage;
 
+        // DECLARE an Action<Image>, call it '_saveImage':
+        private Action<Image> _saveImage;
+
         // DECLARE a string to store the displayed image key, call it '_key':
         private string _key;
 
@@ -60,7 +63,7 @@ namespace Imagen.Views
         /// <param name="flipImage"></param>
         /// <param name="resizeImage"></param>
         /// <param name="key"></param>
-        public void Initialise(ExecuteDelegate execute, Action<string, int, int> loadImage, Action<string, int, int, float> rotateImage, Action<string, int, int, bool, bool> flipImage, Action<string, int, int> resizeImage, string key)
+        public void Initialise(ExecuteDelegate execute, Action<string, int, int> loadImage, Action<string, int, int, float> rotateImage, Action<string, int, int, bool, bool> flipImage, Action<string, int, int> resizeImage, Action<Image> saveImage, string key)
         {
             // SET _execute:
             _execute = execute;
@@ -76,6 +79,9 @@ namespace Imagen.Views
 
             // SET _resizeImage:
             _resizeImage = resizeImage;
+
+            // SET _saveImage:
+            _saveImage = saveImage;
 
             // SET _key:
             _key = key;
@@ -139,7 +145,7 @@ namespace Imagen.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnRotateLeft_Click(object sender, EventArgs e)
+        private void BtnRotateLeft_Click(object sender, EventArgs e)
         {
             ICommand resizeImage = new Command<string, int, int, float>(_rotateImage, _key, displayPanel.Width, displayPanel.Height, -90);
             ICommand openImage = new Command<string, int, int>(_loadImage, _key, displayPanel.Width, displayPanel.Height);
@@ -152,7 +158,7 @@ namespace Imagen.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnRotateRight_Click(object sender, EventArgs e)
+        private void BtnRotateRight_Click(object sender, EventArgs e)
         {
             ICommand resizeImage = new Command<string, int, int, float>(_rotateImage, _key, displayPanel.Width, displayPanel.Height, 90);
             _execute(resizeImage);
@@ -163,7 +169,7 @@ namespace Imagen.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnFlipVertical_Click(object sender, EventArgs e)
+        private void BtnFlipVertical_Click(object sender, EventArgs e)
         {
             ICommand flipImage = new Command<string, int, int, bool, bool>(_flipImage, _key, displayPanel.Width, displayPanel.Height, true, false);
             _execute(flipImage);
@@ -174,7 +180,7 @@ namespace Imagen.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnFlipHorizontal_Click(object sender, EventArgs e)
+        private void BtnFlipHorizontal_Click(object sender, EventArgs e)
         {
             ICommand flipImage = new Command<string, int, int, bool, bool>(_flipImage, _key, displayPanel.Width, displayPanel.Height, false, false);
             _execute(flipImage);
@@ -185,7 +191,7 @@ namespace Imagen.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnResize_Click(object sender, EventArgs e)
+        private void BtnResize_Click(object sender, EventArgs e)
         {
             int width = Convert.ToInt32(txtWidth.Text);
             int height = Convert.ToInt32(txtHeight.Text);
@@ -200,50 +206,9 @@ namespace Imagen.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnExport_Click(object sender, EventArgs e)
+        private void BtnExport_Click(object sender, EventArgs e)
         {
-            /*
-             * Code reference:
-             * 
-             * URL: docs.microsoft.com/en-us/dotnet/framework/winforms/controls/how-to-save-files-using-the-savefiledialog-component
-             * Author: Microsoft
-             * Date: 03/30/2017
-            */
-
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
-            saveFileDialog1.Title = "Save an Image File";
-            saveFileDialog1.ShowDialog();
-
-            // If the file name is not an empty string open it for saving.
-            if (saveFileDialog1.FileName != "")
-            {
-                // Saves the Image via a FileStream created by the OpenFile method.
-                System.IO.FileStream fs =
-                    (System.IO.FileStream)saveFileDialog1.OpenFile();
-                // Saves the Image in the appropriate ImageFormat based upon the
-                // File type selected in the dialog box.
-                // NOTE that the FilterIndex property is one-based.
-                switch (saveFileDialog1.FilterIndex)
-                {
-                    case 1:
-                        _pictureBox.Image.Save(fs,
-                          System.Drawing.Imaging.ImageFormat.Jpeg);
-                        break;
-
-                    case 2:
-                        _pictureBox.Image.Save(fs,
-                          System.Drawing.Imaging.ImageFormat.Bmp);
-                        break;
-
-                    case 3:
-                        _pictureBox.Image.Save(fs,
-                          System.Drawing.Imaging.ImageFormat.Gif);
-                        break;
-                }
-
-                fs.Close();
-            }
+            _saveImage(_pictureBox.Image);
         }      
     }
 }

@@ -36,6 +36,12 @@ namespace Imagen.Views
         public CollectionView()
         {
             InitializeComponent();
+
+            // No smaller than design time size
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+
+            // No larger than design time size
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
         }
 
         public void Initialise(ExecuteDelegate execute, Action<IList<string>, int, int> loadImages, Action<string, Image> openDisplayView)
@@ -71,7 +77,7 @@ namespace Imagen.Views
                 picture.Size = new Size(_width, _height);
                 picture.Image = args.Images[key];
                 picture.Name = key;
-                picture.DoubleClick += new EventHandler(picture_Click);
+                picture.DoubleClick += new EventHandler(Picture_Click);
                 imagePanel.Controls.Add(picture);
 
                 if (imageNum % 3 == 0)
@@ -91,7 +97,7 @@ namespace Imagen.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnLoadImages_Click(object sender, EventArgs e)
+        private void BtnLoadImages_Click(object sender, EventArgs e)
         {
             OpenFileDialog filePicker = new OpenFileDialog();
             filePicker.Multiselect = true;
@@ -106,7 +112,7 @@ namespace Imagen.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void picture_Click(object sender, EventArgs e)
+        private void Picture_Click(object sender, EventArgs e)
         {
             Console.WriteLine((sender as PictureBox).Name);
 

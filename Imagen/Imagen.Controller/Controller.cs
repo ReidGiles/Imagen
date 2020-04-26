@@ -76,13 +76,64 @@ namespace Imagen.Controller
             (displayModel as IDisplayPublisher).Subscribe((displayView as IDisplayListener).OnNewInput);
 
             // Initialise displayView with ExecuteDelegate and a collection of Actions to execute:
-            displayView.Initialise(ExecuteCommand, displayModel.LoadImage, displayModel.RotateImage, displayModel.FlipImage, displayModel.ResizeImage, imageKey);            
+            displayView.Initialise(ExecuteCommand, displayModel.LoadImage, displayModel.RotateImage, displayModel.FlipImage, displayModel.ResizeImage, SaveImage, imageKey);            
 
             // Set the displayView window title:
             displayView.Text = "Display View";
 
             // Open displayView:
             displayView.Show();
+        }
+
+        /// <summary>
+        /// Saves a copy of the image to the user specified file path.
+        /// </summary>
+        /// <param name="image"></param>
+        private void SaveImage(Image image)
+        {
+            /*
+             * Code reference:
+             * 
+             * URL: docs.microsoft.com/en-us/dotnet/framework/winforms/controls/how-to-save-files-using-the-savefiledialog-component
+             * Author: Microsoft
+             * Date: 03/30/2017
+            */
+
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "Png Image|*.png|JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
+            saveFileDialog1.Title = "Save an Image File";
+            saveFileDialog1.ShowDialog();
+
+            // If the file name is not an empty string open it for saving.
+            if (saveFileDialog1.FileName != "")
+            {
+                // Saves the Image via a FileStream created by the OpenFile method.
+                System.IO.FileStream fs =
+                    (System.IO.FileStream)saveFileDialog1.OpenFile();
+                // Saves the Image in the appropriate ImageFormat based upon the
+                // File type selected in the dialog box.
+                // NOTE that the FilterIndex property is one-based.
+                switch (saveFileDialog1.FilterIndex)
+                {
+                    case 1:
+                        image.Save(fs,
+                        System.Drawing.Imaging.ImageFormat.Png);
+                        break;
+                    case 2:
+                        image.Save(fs,
+                        System.Drawing.Imaging.ImageFormat.Bmp);
+                        break;
+                    case 3:
+                        image.Save(fs,
+                        System.Drawing.Imaging.ImageFormat.Gif);
+                        break;
+                    case 4:                        
+                        image.Save(fs,
+                        System.Drawing.Imaging.ImageFormat.Jpeg);
+                        break;
+                }
+                fs.Close();
+            }
         }
     }
 }

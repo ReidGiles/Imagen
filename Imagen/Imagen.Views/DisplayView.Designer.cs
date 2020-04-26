@@ -56,7 +56,7 @@
             this.btnRotateLeft.TabIndex = 1;
             this.btnRotateLeft.Text = "Rotate Left";
             this.btnRotateLeft.UseVisualStyleBackColor = true;
-            this.btnRotateLeft.Click += new System.EventHandler(this.btnRotateLeft_Click);
+            this.btnRotateLeft.Click += new System.EventHandler(this.BtnRotateLeft_Click);
             // 
             // btnRotateRight
             // 
@@ -66,7 +66,7 @@
             this.btnRotateRight.TabIndex = 2;
             this.btnRotateRight.Text = "Rotate Right";
             this.btnRotateRight.UseVisualStyleBackColor = true;
-            this.btnRotateRight.Click += new System.EventHandler(this.btnRotateRight_Click);
+            this.btnRotateRight.Click += new System.EventHandler(this.BtnRotateRight_Click);
             // 
             // btnFlipVertical
             // 
@@ -76,7 +76,7 @@
             this.btnFlipVertical.TabIndex = 3;
             this.btnFlipVertical.Text = "Flip Vertical";
             this.btnFlipVertical.UseVisualStyleBackColor = true;
-            this.btnFlipVertical.Click += new System.EventHandler(this.btnFlipVertical_Click);
+            this.btnFlipVertical.Click += new System.EventHandler(this.BtnFlipVertical_Click);
             // 
             // btnFlipHorizontal
             // 
@@ -86,7 +86,7 @@
             this.btnFlipHorizontal.TabIndex = 4;
             this.btnFlipHorizontal.Text = "Flip Horizontal";
             this.btnFlipHorizontal.UseVisualStyleBackColor = true;
-            this.btnFlipHorizontal.Click += new System.EventHandler(this.btnFlipHorizontal_Click);
+            this.btnFlipHorizontal.Click += new System.EventHandler(this.BtnFlipHorizontal_Click);
             // 
             // btnExport
             // 
@@ -96,7 +96,7 @@
             this.btnExport.TabIndex = 5;
             this.btnExport.Text = "Export";
             this.btnExport.UseVisualStyleBackColor = true;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            this.btnExport.Click += new System.EventHandler(this.BtnExport_Click);
             // 
             // txtWidth
             // 
@@ -138,7 +138,7 @@
             this.btnResize.TabIndex = 10;
             this.btnResize.Text = "Resize";
             this.btnResize.UseVisualStyleBackColor = true;
-            this.btnResize.Click += new System.EventHandler(this.btnResize_Click);
+            this.btnResize.Click += new System.EventHandler(this.BtnResize_Click);
             // 
             // DisplayView
             // 

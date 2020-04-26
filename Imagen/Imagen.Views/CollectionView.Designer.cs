@@ -40,7 +40,7 @@
             this.btnLoadImages.TabIndex = 0;
             this.btnLoadImages.Text = "Load Images";
             this.btnLoadImages.UseVisualStyleBackColor = true;
-            this.btnLoadImages.Click += new System.EventHandler(this.btnLoadImages_Click);
+            this.btnLoadImages.Click += new System.EventHandler(this.BtnLoadImages_Click);
             // 
             // imagePanel
             // 
