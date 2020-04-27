@@ -12,7 +12,7 @@ namespace Imagen.Core
     /// 
     /// Author: Reid Giles
     /// </summary>
-    public class DisplayEventArgs
+    public class DisplayEventArgs : EventArgs
     {
         /// <summary>
         /// Property to hold the published image

@@ -103,7 +103,9 @@ namespace Imagen.Views
             filePicker.Multiselect = true;
             DialogResult result = filePicker.ShowDialog();
 
+            // Create a new command, give it _load images as an action and file names, _width and _height as parameters
             ICommand loadImages = new Command<IList<string>, int, int>(_loadImages, filePicker.FileNames.ToList(), _width, _height);
+            // Execute the command
             _execute(loadImages);
         }
 
@@ -116,7 +118,9 @@ namespace Imagen.Views
         {
             Console.WriteLine((sender as PictureBox).Name);
 
+            // Create a new command, give it _openDisplayView as an action and the image and key as parameters
             ICommand openDisplayView = new Command<string, Image>(_openDisplayView, (sender as PictureBox).Name, (sender as PictureBox).Image);
+            // Execute the command
             _execute(openDisplayView);
         }
     }

@@ -114,10 +114,13 @@ namespace Imagen.Views
         /// <param name="args"></param>
         public void OnNewInput(object source, DisplayEventArgs args)
         {
+            // Reset picture box location
             _pictureBox.Location = new Point(0, 0);
-            // here
+            // Reset picture box size to image size
             _pictureBox.Size = new Size(args.Image.Width, args.Image.Height);
+            // Reset picture box images
             _pictureBox.Image = args.Image;
+            // Add picture box to displayPanel
             displayPanel.Controls.Add(_pictureBox);
         }
 
@@ -128,15 +131,19 @@ namespace Imagen.Views
         /// <param name="e"></param>
         private void DisplayView_Resize(object sender, EventArgs e)
         {
+            // Resize display pannel while leaving space for controls
             displayPanel.Width = Width - 40;
             displayPanel.Height = Height - 225;
 
+            // Lock display panel to original aspect ratio
             if (displayPanel.Width > displayPanel.Height)
                 displayPanel.Width = displayPanel.Height;
             else if (displayPanel.Height > displayPanel.Width)
                 displayPanel.Height = displayPanel.Width;
 
+            // Create a new command, give it _loadImages as an action and image key, display width and display height as parameters
             ICommand openImage = new Command<string, int, int>(_loadImage, _key, displayPanel.Width, displayPanel.Height);
+            // Execute the command
             _execute(openImage);
         }
 
@@ -147,8 +154,11 @@ namespace Imagen.Views
         /// <param name="e"></param>
         private void BtnRotateLeft_Click(object sender, EventArgs e)
         {
+            // Create a new command, give it _rotateImage as an action and image key, display pannel width, height and rotation ammount as parameters
             ICommand resizeImage = new Command<string, int, int, float>(_rotateImage, _key, displayPanel.Width, displayPanel.Height, -90);
+            // Create a new command, give it _loadImages as an action and image key, display width and display height as parameters
             ICommand openImage = new Command<string, int, int>(_loadImage, _key, displayPanel.Width, displayPanel.Height);
+            // Execute the commands
             _execute(resizeImage);
             _execute(openImage);
         }
@@ -160,7 +170,9 @@ namespace Imagen.Views
         /// <param name="e"></param>
         private void BtnRotateRight_Click(object sender, EventArgs e)
         {
+            // Create a new command, give it _rotateImage as an action and image key, display pannel width, height and rotation ammount as parameters
             ICommand resizeImage = new Command<string, int, int, float>(_rotateImage, _key, displayPanel.Width, displayPanel.Height, 90);
+            // Execute the command
             _execute(resizeImage);
         }
 
@@ -171,7 +183,9 @@ namespace Imagen.Views
         /// <param name="e"></param>
         private void BtnFlipVertical_Click(object sender, EventArgs e)
         {
+            // Create a new command, give it _flipImage as an action and image key, display panel width, height and flip values as parameters
             ICommand flipImage = new Command<string, int, int, bool, bool>(_flipImage, _key, displayPanel.Width, displayPanel.Height, true, false);
+            // Execute the command
             _execute(flipImage);
         }
 
@@ -182,7 +196,9 @@ namespace Imagen.Views
         /// <param name="e"></param>
         private void BtnFlipHorizontal_Click(object sender, EventArgs e)
         {
+            // Create a new command, give it _flipImage as an action and image key, display panel width, height and flip values as parameters
             ICommand flipImage = new Command<string, int, int, bool, bool>(_flipImage, _key, displayPanel.Width, displayPanel.Height, false, false);
+            // Execute the command
             _execute(flipImage);
         }
 
@@ -193,10 +209,15 @@ namespace Imagen.Views
         /// <param name="e"></param>
         private void BtnResize_Click(object sender, EventArgs e)
         {
+            // DECLARE and SET width to user input value
             int width = Convert.ToInt32(txtWidth.Text);
+            // DECLARE and SET height to user input value
             int height = Convert.ToInt32(txtHeight.Text);
+            // Create a new command, give it _resizeImage as an action and image key, width and height as parameters
             ICommand resizeImage = new Command<string, int, int>(_resizeImage, _key, width, height);
+            // Create a new command, give it _loadImages as an action and image key, display width and display height as parameters
             ICommand openImage = new Command<string, int, int>(_loadImage, _key, displayPanel.Width, displayPanel.Height);
+            // Execute the commands
             _execute(resizeImage);
             _execute(openImage);
         }
@@ -208,7 +229,10 @@ namespace Imagen.Views
         /// <param name="e"></param>
         private void BtnExport_Click(object sender, EventArgs e)
         {
-            _saveImage(_pictureBox.Image);
+            // Create a new command, give it _saveImage as an action and _pictureBox.Image as a parameter
+            ICommand saveImage = new Command<Image>(_saveImage, _pictureBox.Image);
+            // Execute the command
+            _execute(saveImage);
         }      
     }
 }

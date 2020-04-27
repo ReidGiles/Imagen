@@ -12,7 +12,7 @@ namespace Imagen.Core
     /// 
     /// Author: Reid Giles
     /// </summary>
-    public class CollectionEventArgs
+    public class CollectionEventArgs : EventArgs
     {
         /// <summary>
         /// Property to hold the published images with their unique ID

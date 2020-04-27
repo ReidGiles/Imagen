@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 namespace Imagen.Core
 {
+    /*
+    * Code reference:
+    * 
+    * URL: https://worcesterbb.blackboard.com/bbcswebdav/pid-1419500-dt-content-rid-3803236_1/xid-3803236_1
+    * Author: Marc Price
+    * Date: n.d.
+    */
+
     /// <summary>
     /// Command class, stores an action for execute.
     /// </summary>
@@ -67,7 +75,7 @@ namespace Imagen.Core
     }
 
     /// <summary>
-    /// Generic Command class, which provides for a single parameter of type T for Execute.
+    /// Generic Command class, which provides for two parameters of type T & Y for Execute.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class Command<T, Y> : ICommand
@@ -103,7 +111,7 @@ namespace Imagen.Core
     }
 
     /// <summary>
-    /// Generic Command class, which provides for a single parameter of type T for Execute.
+    /// Generic Command class, which provides for three parameters of type T, Y & U for Execute.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class Command<T, Y, U> : ICommand
@@ -114,8 +122,10 @@ namespace Imagen.Core
         // DECLARE a variable of type T to represent the required data, call it _data:
         private T _data;
 
+        // DECLARE a variable of type Y to represent the required data, call it _yData:
         private Y _yData;
 
+        // DECLARE a variable of type U to represent the required data, call it _uData:
         private U _uData;
 
         /// <summary>
@@ -142,7 +152,7 @@ namespace Imagen.Core
     }
 
     /// <summary>
-    /// Generic Command class, which provides for a single parameter of type T for Execute.
+    /// Generic Command class, which provides for four parameters of type T, Y, U & I for Execute.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class Command<T, Y, U, I> : ICommand
@@ -153,10 +163,13 @@ namespace Imagen.Core
         // DECLARE a variable of type T to represent the required data, call it _data:
         private T _data;
 
+        // DECLARE a variable of type Y to represent the required data, call it _yData:
         private Y _yData;
 
+        // DECLARE a variable of type U to represent the required data, call it _uData:
         private U _uData;
 
+        // DECLARE a variable of type I to represent the required data, call it _iData:
         private I _iData;
 
         /// <summary>
@@ -184,7 +197,7 @@ namespace Imagen.Core
     }
 
     /// <summary>
-    /// Generic Command class, which provides for a single parameter of type T for Execute.
+    /// Generic Command class, which provides for five parameters of type T, Y, U, I & O for Execute.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class Command<T, Y, U, I, O> : ICommand
@@ -195,12 +208,16 @@ namespace Imagen.Core
         // DECLARE a variable of type T to represent the required data, call it _data:
         private T _data;
 
+        // DECLARE a variable of type Y to represent the required data, call it _yData:
         private Y _yData;
 
+        // DECLARE a variable of type U to represent the required data, call it _uData:
         private U _uData;
 
+        // DECLARE a variable of type I to represent the required data, call it _iData:
         private I _iData;
 
+        // DECLARE a variable of type O to represent the required data, call it _oData:
         private O _oData;
 
         /// <summary>
